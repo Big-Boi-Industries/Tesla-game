@@ -5,7 +5,7 @@
 The theme for 2023 FXP Challange is "Nikola Tesla". So, our group is goung to go with the idea: 
 
 ## Team Members
- - <img src="https://www.github.com/thatjamesemp.png" width="250" height="250" /> [@thatjamesemo](https://www.github.com/thatjamesemo) - Developer  
+ - <img src="www.github.com/thatjamesemo.png" width="250" height="250" /> [@thatjamesemo](https://www.github.com/thatjamesemo) - Developer  
  - ![DistantBowl's profile picture](https://www.github.com/DistantBowl.png =250x250) [@DistantBowl](https://www.github.com/DistantBowl) - Developer  
  - ![FeaturedCloud59's profile picture](https://www.github.com/FeaturedCloud59.png =250x250) [@FeaturedCloud59](https://www.github.com/FeaturedCloud59) - Modeller  
  - ![E-Sayer's profile picture](https://www.github.com/E-Sayer.png =250x250) [@E-Sayer](https://www.github.com/E-Sayer) - Modeller  
