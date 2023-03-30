@@ -11,6 +11,7 @@ public class EscapeMenu : MonoBehaviour
     void Start()
     {
         gameObject.SetActive(EscapeActive);
+
     }
 
     // Update is called once per frame
@@ -26,5 +27,7 @@ public class EscapeMenu : MonoBehaviour
                 EscapeActive = true;
             }
         }
+
+        gameObject.SetActive(EscapeActive);
     }
 }
