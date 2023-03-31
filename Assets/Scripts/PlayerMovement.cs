@@ -7,13 +7,17 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float movementModifier = 0.1f;
     [SerializeField] float jumpModifier = 6f;
+    
     Rigidbody rb;
     Transform transform;
+    [SerializeField] Transform cameraTransform;
 
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
+
     bool cursorVisibility = false;
-    [SerializeField] float mouseSensitivityX = 2f;
+    [SerializeField] float mouseSensitivityX = 4f;
+    [SerializeField] float mouseSensitivityY = 4f;
 
 
 
@@ -44,6 +48,11 @@ public class PlayerMovement : MonoBehaviour
         float turn = Input.GetAxis("Mouse X") * mouseSensitivityX;
         transform.Rotate(new Vector3(0, turn, 0), Space.Self);
 
+        float updown = Input.GetAxis("Mouse Y") * mouseSensitivityY;
+        cameraTransform.rotation = new Quaternion(clampTo(cameraTransform.rotation.x + updown, 40, -40), 0, 0, 0);
+        Debug.Log(clampTo(cameraTransform.rotation.x + updown, -40f, 40f).ToString());
+        
+
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = cursorVisibility;
     }
@@ -51,5 +60,21 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, .1f, ground);
+    }
+
+    float clampTo(float numberToClamp, float min, float max)
+    {
+        Debug.Log(numberToClamp.ToString());
+        if(numberToClamp <= min)
+        {
+            return min;
+        } else if(numberToClamp > max)
+        {
+            return max;
+        } else
+        {
+            return numberToClamp;
+        }
+        
     }
 }
