@@ -19,11 +19,14 @@ public class PlayerMovement : MonoBehaviour
     private bool Up;
     private RaycastHit hit;
     private Rigidbody rb;
+
+    private Transform playerTransform;
     // Start is called before the first frame update
     void Start()
     {
         Camera = GameObject.Find("Main Camera"); //sets camera variable to the main camera game object
         rb = gameObject.GetComponent<Rigidbody>(); //gets the rigidbody attached to the player
+        transform = gameObject.GetComponent<Transform>(); // Gets the transform for the player. tje
     }
     void FixedUpdate() // called every physics update
     {
@@ -97,5 +100,10 @@ public class PlayerMovement : MonoBehaviour
             Velocity = Vector2.ClampMagnitude(new Vector2(rb.velocity.x, rb.velocity.z), MaxSprintSpeed); //clamps the magnitued of the rigidbodyes x and z velocities to be below MaxSprintSpeed and stores them
             rb.velocity = new Vector3(Velocity.x, rb.velocity.y, Velocity.y); //sets the player velocity to the clamped x and z and dosn't alter the y 
         }
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        //transform.SetPositionAndRotation(position, )
     }
 }

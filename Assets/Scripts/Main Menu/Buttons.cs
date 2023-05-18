@@ -21,4 +21,9 @@ public class Buttons : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+
+    public void onContinue()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
 }
