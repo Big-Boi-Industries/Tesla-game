@@ -22,11 +22,11 @@ public class DoorRotation : MonoBehaviour
     {
         if (collision.collider.name.Contains("Player") & BackRot)
         {
-            rb.AddRelativeTorque(Vector3.up, ForceMode.Force);
+            rb.AddRelativeTorque(Vector3.up * 10, ForceMode.Force);
         }
         if (collision.collider.name.Contains("Player") & FrontRot)
         {
-            rb.AddRelativeTorque(Vector3.up * -1, ForceMode.Force);
+            rb.AddRelativeTorque(Vector3.up * -10, ForceMode.Force);
         }
     }
 }
