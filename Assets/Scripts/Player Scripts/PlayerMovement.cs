@@ -67,9 +67,9 @@ public class PlayerMovement : MonoBehaviour
         {
             Camera.transform.Rotate((new Vector3(-Input.GetAxis("Mouse Y"), 0, 0) * CameraSensitivity * Time.smoothDeltaTime * 0.01f)*100); //moves the camera down by CameraSensitivity unit(s) per second (the *0.01f and *100 allow for smoother movement)
         }
-        if (Camera.transform.rotation.eulerAngles.x > 85 & Camera.transform.rotation.eulerAngles.x < 91) { Down = false; } //checks is the camera is looking in the lower clamped area and if so states that the camera can no longer move down
+        if (Camera.transform.rotation.eulerAngles.x > 45 & Camera.transform.rotation.eulerAngles.x < 91) { Down = false; } //checks is the camera is looking in the lower clamped area and if so states that the camera can no longer move down
         else { Down = true; } //states the camera can move down if it is not in the lower clamped area
-        if (Camera.transform.rotation.eulerAngles.x > 269 & Camera.transform.rotation.eulerAngles.x < 275) { Up = false; } //checks is the camera is looking in the upper clamped area and if so states that the camera can no longer move up
+        if (Camera.transform.rotation.eulerAngles.x > 269 & Camera.transform.rotation.eulerAngles.x < 315) { Up = false; } //checks is the camera is looking in the upper clamped area and if so states that the camera can no longer move up
         else { Up = true; } //states the camera can move up if it is not in the upper clamped area
     }
     void Move()

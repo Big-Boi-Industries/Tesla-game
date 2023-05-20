@@ -63,6 +63,15 @@ public class TeslaCoilPartPickUp : MonoBehaviour
                     PickedUp = true;
                 }
             }
+            if (collision.collider.name.Contains("4") & !Placed4)
+            {
+                PickUp = true;
+                if (PickUp & Input.GetKey(KeyCode.E) & !PickedUp)
+                {
+                    Part = collision.gameObject;
+                    PickedUp = true;
+                }
+            }
         }
     }
     private void OnCollisionExit(Collision collision)
