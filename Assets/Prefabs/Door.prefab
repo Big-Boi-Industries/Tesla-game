@@ -34,9 +34,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 321202873813607849}
+  - {fileID: 8024117083661954394}
   - {fileID: 321202873749932420}
   - {fileID: 2610434314052023013}
-  - {fileID: 8024117083661954394}
   m_Father: {fileID: 321202874138785408}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -164,7 +164,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 321202872542319901}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &321202873749932424
 MeshFilter:
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 8306474084682949563}
   - component: {fileID: 2906094204652002525}
   m_Layer: 0
-  m_Name: Doorstop
+  m_Name: Doorstop Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -433,7 +433,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 321202872542319901}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3298334737465560084
 MeshFilter:
@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 7698413649581189501}
   - component: {fileID: 7026276781836373566}
   m_Layer: 0
-  m_Name: Doorstop (1)
+  m_Name: Doorstop Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -543,7 +543,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 321202872542319901}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1901511504677071355
 MeshFilter:

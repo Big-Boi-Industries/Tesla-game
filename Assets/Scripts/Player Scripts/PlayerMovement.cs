@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
             Cursor.visible = true; //hides cursor while playing
             Cursor.lockState = CursorLockMode.Confined; //locks cursor to the centre of the game window
         }
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.02f)) //raycasts downwards from the players centre 1.02 units and checks if an object is there
+        if (Physics.Raycast(new Vector3(transform.position.x,transform.position.y+1,transform.position.z), Vector3.down, out hit, 1.02f)) //raycasts downwards from the players centre 1.02 units and checks if an object is there
         {
             if (hit.transform.name.Contains("Floor")) { CanJump = true; } //if there is an object and it is a floor object then the player can jump
         }

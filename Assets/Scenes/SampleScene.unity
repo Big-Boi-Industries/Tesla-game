@@ -1826,9 +1826,9 @@ MonoBehaviour:
   Speed: 25
   MaxSpeed: 5
   SprintSpeed: 8
-  MaxSprintSpeed: 6
+  MaxSprintSpeed: 8
   CameraSensitivity: 5
-  JumpHight: 1.75
+  JumpHight: 1
 --- !u!65 &459548358
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8073,6 +8073,10 @@ PrefabInstance:
     - target: {fileID: 321202874138785410, guid: 330270c5dd23dd4488f64fff280f0e3a, type: 3}
       propertyPath: m_Name
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792995820881389973, guid: 330270c5dd23dd4488f64fff280f0e3a, type: 3}
+      propertyPath: m_Name
+      value: Doorstop Back
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 330270c5dd23dd4488f64fff280f0e3a, type: 3}
