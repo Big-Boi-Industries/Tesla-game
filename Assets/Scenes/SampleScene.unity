@@ -1827,7 +1827,7 @@ MonoBehaviour:
   MaxSpeed: 5
   SprintSpeed: 8
   MaxSprintSpeed: 6
-  CameraSensitivity: 150
+  CameraSensitivity: 5
   JumpHight: 1.75
 --- !u!65 &459548358
 BoxCollider:
@@ -1840,8 +1840,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.2, y: 4.3, z: 2.9}
-  m_Center: {x: -1.03, y: 2.4, z: -0.05}
+  m_Size: {x: 3.6, y: 4.3, z: 2.9}
+  m_Center: {x: -1.1, y: 2.4, z: -0.05}
 --- !u!54 &459548359
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4052,7 +4052,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576588546}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.5, y: 1.5, z: 0}
+  m_LocalPosition: {x: -5, y: 1.5, z: 0}
   m_LocalScale: {x: 2.8571427, y: 2.8571427, z: 2.8571427}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5141,7 +5141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841504299}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.25, y: 3.8, z: -0.11}
+  m_LocalPosition: {x: -1.55, y: 3.8, z: -0.11}
   m_LocalScale: {x: 2.8571427, y: 2.8571427, z: 2.8571427}
   m_ConstrainProportionsScale: 0
   m_Children: []
