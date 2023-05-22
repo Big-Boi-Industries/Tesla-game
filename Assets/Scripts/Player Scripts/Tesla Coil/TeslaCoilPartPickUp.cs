@@ -11,6 +11,7 @@ public class TeslaCoilPartPickUp : MonoBehaviour
 
     [SerializeField] private GameObject showPickup;
     [SerializeField] private GameObject showDrop;
+    [SerializeField] private GameObject backer;
 
     public static bool PickedUp;
     public static GameObject Part;
@@ -22,11 +23,21 @@ public class TeslaCoilPartPickUp : MonoBehaviour
 
         showPickup.SetActive(false);
         showDrop.SetActive(false);
+        backer.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (showDrop.active || showPickup.active)
+        {
+            backer.SetActive(true);
+        }
+        else
+        {
+            backer.SetActive(false);
+        }
+
         if (PickedUp) 
         {
 
