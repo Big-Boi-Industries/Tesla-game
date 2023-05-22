@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using SaveAndLoad;
+using static GlobalVariables;
 
 public class Buttons : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -20,11 +20,13 @@ public class Buttons : MonoBehaviour
 
     public void onStartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        newGame = true;
+        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
     }
 
-    public void onContinue()
+    public void onContinueGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        continuedGame = true;
+        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
     }
 }

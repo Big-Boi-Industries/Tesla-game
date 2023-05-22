@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float SprintSpeed = 8.0f; //how fast the player sprints
     public float MaxSprintSpeed = 6.0f; //terminal sprint speed
     public float CameraSensitivity = 150.0f; //how sensetive the camera is
+    private float yRot = 0;
     public float JumpHight = 1.0f; //how high the player can jump
     private Vector2 Velocity;
     private bool CanJump;
@@ -47,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
             Cursor.visible = true; //hides cursor while playing
             Cursor.lockState = CursorLockMode.Confined; //locks cursor to the centre of the game window
         }
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.02f)) //raycasts downwards from the players centre 1.02 units and checks if an object is there
+        if (Physics.Raycast(new Vector3(transform.position.x,transform.position.y+1,transform.position.z), Vector3.down, out hit, 1.02f)) //raycasts downwards from the players centre 1.02 units and checks if an object is there
         {
             if (hit.transform.name.Contains("Floor")) { CanJump = true; } //if there is an object and it is a floor object then the player can jump
         }
@@ -57,20 +58,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetAxis("Mouse X") != 0) //checks if you are moving the mouse to the right
         {
-            rb.AddRelativeTorque(new Vector3(0, Input.GetAxis("Mouse X") * CameraSensitivity * Time.smoothDeltaTime, 0), ForceMode.VelocityChange); //rotates the player using physics without taking into account mass by CameraSensitivity units/second in the direction the mouse is moved along the x axis
+            rb.AddRelativeTorque(new Vector3(0, Input.GetAxis("Mouse X") * CameraSensitivity * 30 * Time.smoothDeltaTime, 0), ForceMode.VelocityChange); //rotates the player using physics without taking into account mass by CameraSensitivity units/second in the direction the mouse is moved along the x axis
         }
-        if (Input.GetAxis("Mouse Y") > 0 & Up) //checks if you are moving the mouse up
-        {
-            Camera.transform.Rotate((new Vector3(-Input.GetAxis("Mouse Y"), 0, 0) * CameraSensitivity * Time.smoothDeltaTime * 0.01f) * 100); //moves the camera down by CameraSensitivity unit(s) per second (the *0.01f and *100 allow for smoother movement)
-        }
-        if (Input.GetAxis("Mouse Y") < 0 & Down) //checks if you are moving the mouse down
-        {
-            Camera.transform.Rotate((new Vector3(-Input.GetAxis("Mouse Y"), 0, 0) * CameraSensitivity * Time.smoothDeltaTime * 0.01f)*100); //moves the camera down by CameraSensitivity unit(s) per second (the *0.01f and *100 allow for smoother movement)
-        }
-        if (Camera.transform.rotation.eulerAngles.x > 85 & Camera.transform.rotation.eulerAngles.x < 91) { Down = false; } //checks is the camera is looking in the lower clamped area and if so states that the camera can no longer move down
-        else { Down = true; } //states the camera can move down if it is not in the lower clamped area
-        if (Camera.transform.rotation.eulerAngles.x > 269 & Camera.transform.rotation.eulerAngles.x < 275) { Up = false; } //checks is the camera is looking in the upper clamped area and if so states that the camera can no longer move up
-        else { Up = true; } //states the camera can move up if it is not in the upper clamped area
+        yRot = Mathf.Clamp(yRot + (Input.GetAxis("Mouse Y") * CameraSensitivity),-60f,60f);
+        Camera.transform.localRotation = Quaternion.Euler(-yRot, -90, 0);
     }
     void Move()
     {
