@@ -8,6 +8,10 @@ public class TeslaCoilPartPickUp : MonoBehaviour
     private bool PickUp = false;
     private GameObject Holder;
     private GameObject Player;
+
+    [SerializeField] private GameObject showPickup;
+    [SerializeField] private GameObject showDrop;
+
     public static bool PickedUp;
     public static GameObject Part;
     // Start is called before the first frame update
@@ -15,6 +19,9 @@ public class TeslaCoilPartPickUp : MonoBehaviour
     {
         Player = GameObject.Find("Player");
         Holder = GameObject.Find("Hold");
+
+        showPickup.SetActive(false);
+        showDrop.SetActive(false);
     }
 
     // Update is called once per frame
@@ -22,6 +29,9 @@ public class TeslaCoilPartPickUp : MonoBehaviour
     {
         if (PickedUp) 
         {
+
+            showDrop.SetActive(true);
+
             Part.transform.rotation = new Quaternion(0, Player.transform.rotation.y, 0 , Player.transform.rotation.w);
             Part.transform.position = new Vector3(Holder.transform.position.x, Holder.transform.position.y, Holder.transform.position.z);
             Part.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -30,12 +40,23 @@ public class TeslaCoilPartPickUp : MonoBehaviour
                 Part = null;
                 PickedUp = false;
             }
+        } else
+        {
+            showDrop.SetActive(false);
+        }
+
+        if(PickedUp)
+        {
+            showPickup.SetActive(false);
         }
     }
     private void OnCollisionStay(Collision collision)
     {
         if (collision.collider.name.Contains("Tesla Coil"))
         {
+
+            showPickup.SetActive(true);
+
             if (collision.collider.name.Contains("1") & !Placed1) 
             {
                 PickUp = true;
@@ -79,6 +100,7 @@ public class TeslaCoilPartPickUp : MonoBehaviour
         if (collision.collider.name.Contains("Tesla Coil")) 
         {
             PickUp = false;
+            showPickup.SetActive(false);
         }
     }
 }
