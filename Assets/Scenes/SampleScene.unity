@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1742,7 +1742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90c248310f507cf47a203c16a7e19906, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.4
+      value: 9.427
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90c248310f507cf47a203c16a7e19906, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3285,7 +3285,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1253378709}
   serializedVersion: 8
-  lengthInSec: 2
+  lengthInSec: 1
   simulationSpeed: 5
   stopAction: 0
   cullingMode: 0
@@ -11356,11 +11356,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 857287333785536444, guid: b011f41cb708da64f9d513d10f51e397, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3095052148987877274, guid: b011f41cb708da64f9d513d10f51e397, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5706861057345962075, guid: b011f41cb708da64f9d513d10f51e397, type: 3}
       propertyPath: m_RootOrder
