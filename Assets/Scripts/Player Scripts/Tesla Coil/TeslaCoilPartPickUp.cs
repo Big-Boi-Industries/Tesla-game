@@ -46,7 +46,7 @@ public class TeslaCoilPartPickUp : MonoBehaviour
             Part.transform.rotation = new Quaternion(0, Player.transform.rotation.y, 0 , Player.transform.rotation.w);
             Part.transform.position = new Vector3(Holder.transform.position.x, Holder.transform.position.y, Holder.transform.position.z);
             Part.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            if (Input.GetKey(KeyCode.Q)) 
+            if (Input.GetKey(GlobalVariables.dropKeybind)) 
             {
                 Part = null;
                 PickedUp = false;
@@ -71,7 +71,7 @@ public class TeslaCoilPartPickUp : MonoBehaviour
             if (collision.collider.name.Contains("1") & !Placed1) 
             {
                 PickUp = true;
-                if (PickUp & Input.GetKey(KeyCode.E) & !PickedUp)
+                if (PickUp & Input.GetKey(GlobalVariables.pickupKeybind) & !PickedUp)
                 {
                     Part = collision.gameObject;
                     PickedUp = true;
@@ -80,7 +80,7 @@ public class TeslaCoilPartPickUp : MonoBehaviour
             if (collision.collider.name.Contains("2") & !Placed2)
             {
                 PickUp = true;
-                if (PickUp & Input.GetKey(KeyCode.E) & !PickedUp)
+                if (PickUp & Input.GetKey(GlobalVariables.pickupKeybind) & !PickedUp)
                 {
                     Part = collision.gameObject;
                     PickedUp = true;
@@ -89,7 +89,7 @@ public class TeslaCoilPartPickUp : MonoBehaviour
             if (collision.collider.name.Contains("3") & !Placed3)
             {
                 PickUp = true;
-                if (PickUp & Input.GetKey(KeyCode.E) & !PickedUp)
+                if (PickUp & Input.GetKey(GlobalVariables.pickupKeybind) & !PickedUp)
                 {
                     Part = collision.gameObject;
                     PickedUp = true;
@@ -98,7 +98,7 @@ public class TeslaCoilPartPickUp : MonoBehaviour
             if (collision.collider.name.Contains("4") & !Placed4)
             {
                 PickUp = true;
-                if (PickUp & Input.GetKey(KeyCode.E) & !PickedUp)
+                if (PickUp & Input.GetKey(GlobalVariables.pickupKeybind) & !PickedUp)
                 {
                     Part = collision.gameObject;
                     PickedUp = true;
