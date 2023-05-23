@@ -25,22 +25,22 @@ public class DoorRotation : MonoBehaviour
     }
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.collider.name.Contains("Player") & BackRot)
+        if (collision.collider.name.Contains("Player") & BackRot & !Closing)
         {
             rb.AddRelativeTorque(Vector3.up * 1000, ForceMode.Force);
         }
-        if (collision.collider.name.Contains("Player") & FrontRot)
+        if (collision.collider.name.Contains("Player") & FrontRot & !Closing)
         {
             rb.AddRelativeTorque(Vector3.up * -1000, ForceMode.Force);
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.name.Contains("Closed Locator") & !Closed) { Closed = true; rb.angularVelocity = Vector3.zero; FrontStop = false; BackStop = false; }
+        if (collision.collider.name.Contains("Closed Locator")) { Closed = true; rb.angularVelocity = Vector3.zero; Closed = false; }
     }
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.collider.name.Contains("Closed Locator") & Closed) { Closed = false; }
+        if (collision.collider.name.Contains("Closed Locator")) { Closed = false; }
     }
 }
     
