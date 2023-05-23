@@ -19,17 +19,16 @@ public class DoorRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(BackRot);
         rb.angularVelocity = new Vector3(0, Mathf.Clamp(rb.angularVelocity.y, -DoorRotationSpeed, DoorRotationSpeed), 0);
         transform.rotation = new Quaternion(0, 0, 0, 0);
     }
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.collider.name.Contains("Player") & BackRot)
+        if (BackRot)
         {
             rb.AddRelativeTorque(Vector3.up * 1000, ForceMode.Force);
         }
-        if (collision.collider.name.Contains("Player") & FrontRot)
+        if (FrontRot)
         {
             rb.AddRelativeTorque(Vector3.up * -1000, ForceMode.Force);
         }
