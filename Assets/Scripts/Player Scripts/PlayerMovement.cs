@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Camera = GameObject.Find("Main Camera"); //sets camera variable to the main camera game object
         rb = gameObject.GetComponent<Rigidbody>(); //gets the rigidbody attached to the player
+        
     }
     void FixedUpdate() // called every physics update
     {
@@ -61,17 +62,17 @@ public class PlayerMovement : MonoBehaviour
             rb.AddRelativeTorque(new Vector3(0, Input.GetAxis("Mouse X") * CameraSensitivity * 30 * Time.smoothDeltaTime, 0), ForceMode.VelocityChange); //rotates the player using physics without taking into account mass by CameraSensitivity units/second in the direction the mouse is moved along the x axis
         }
         yRot = Mathf.Clamp(yRot + (Input.GetAxis("Mouse Y") * CameraSensitivity),-60f,60f);
-        Camera.transform.localRotation = Quaternion.Euler(-yRot, -90, 0);
+        Camera.transform.localRotation = Quaternion.Euler(-yRot, 90, 0);
     }
     void Move()
     {
         if (Input.GetKey(KeyCode.W) | Input.GetKey(KeyCode.S) | Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.D) & !Input.GetKey(KeyCode.LeftShift)) //checks if the player is pressing a move key and not holding shift
         {
-            rb.AddRelativeForce(new Vector3(-Input.GetAxisRaw("Vertical"), 0, Input.GetAxisRaw("Horizontal")).normalized * Speed * Time.smoothDeltaTime, ForceMode.Impulse); //moves the player at walking speed
+            rb.AddRelativeForce(new Vector3(Input.GetAxisRaw("Vertical"), 0, -Input.GetAxisRaw("Horizontal")).normalized * Speed * Time.smoothDeltaTime, ForceMode.Impulse); //moves the player at walking speed
         }
         if (Input.GetKey(KeyCode.W) | Input.GetKey(KeyCode.S) | Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.D) & Input.GetKey(KeyCode.LeftShift)) //checks if the player is pressing a move key and is holding shift
         {
-            rb.AddRelativeForce(new Vector3(-Input.GetAxisRaw("Vertical"), 0, Input.GetAxisRaw("Horizontal")).normalized * SprintSpeed * Time.smoothDeltaTime, ForceMode.Impulse); //moves the player at running speed
+            rb.AddRelativeForce(new Vector3(Input.GetAxisRaw("Vertical"), 0, -Input.GetAxisRaw("Horizontal")).normalized * SprintSpeed * Time.smoothDeltaTime, ForceMode.Impulse); //moves the player at running speed
         }
         if (!Input.GetKey(KeyCode.W) & !Input.GetKey(KeyCode.S) & !Input.GetKey(KeyCode.A) & !Input.GetKey(KeyCode.D)) { rb.velocity = new Vector3(0, rb.velocity.y, 0); } //if no movement keys are held the player stops
         if (Input.GetKey(KeyCode.Space) & CanJump) { rb.AddRelativeForce(new Vector3(0, JumpHight, 0), ForceMode.Impulse); } //if the space key is pressed and the player can jump an upwards force is applied

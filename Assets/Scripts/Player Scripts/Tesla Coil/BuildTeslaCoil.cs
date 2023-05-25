@@ -5,7 +5,7 @@ using static TeslaCoilPartPickUp;
 
 public class BuildTeslaCoil : MonoBehaviour
 {
-    private bool CanBuild = false;
+    public bool CanBuild = false;
     public static bool Placed1 = false;
     public static bool Placed2 = false;
     public static bool Placed3 = false;
