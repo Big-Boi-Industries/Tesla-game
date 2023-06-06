@@ -19,6 +19,7 @@ public class SaveAndLoad : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(Application.persistentDataPath);
         Coil1 = GameObject.Find("Tesla Coil Base (1)");
         Coil2 = GameObject.Find("Tesla Coil Front Middle (2)");
         Coil3 = GameObject.Find("Tesla Coil Generator (3)");
@@ -66,19 +67,20 @@ public class SaveAndLoad : MonoBehaviour
     }
     public void Save(string DataType) //takes a string of the desired cache to save
     {
-        if (!File.Exists("Assets\\Data\\" + DataType + ".txt")) //checks if a file for the cache dosn't exists
+        if (!Directory.Exists(Application.persistentDataPath + "\\Data\\")) { Directory.CreateDirectory(Application.persistentDataPath + "\\Data\\"); }
+        if (!File.Exists(Application.persistentDataPath + "\\Data\\" + DataType + ".txt")) //checks if a file for the cache dosn't exists
         {
-            File.Create("Assets\\Data\\" + DataType + ".txt"); //creates a file for the cache
+            File.Create(Application.persistentDataPath + "\\Data\\" + DataType + ".txt"); //creates a file for the cache
         }
         if (DataType == "PlayerData") //checks if the cache wanted to be saved is PlayerData
         {
             string Data = JsonUtility.ToJson(PlayersData, true); //Changes the cache into a json string
-            File.WriteAllText("Assets\\Data\\" + DataType + ".txt", Data); //Writes the json string the designated file
+            File.WriteAllText(Application.persistentDataPath + "\\Data\\" + DataType + ".txt", Data); //Writes the json string the designated file
         }
         if (DataType == "CoilData") 
         {
             string Data = JsonUtility.ToJson(CoilsData, true); //Changes the cache into a json string
-            File.WriteAllText("Assets\\Data\\" + DataType + ".txt", Data); //Writes the json string the designated file
+            File.WriteAllText(Application.persistentDataPath + "\\Data\\" + DataType + ".txt", Data); //Writes the json string the designated file
         }
     }
     public void Load(string DataType) //takes a string of the desired cache to load
@@ -86,9 +88,9 @@ public class SaveAndLoad : MonoBehaviour
         if (DataType == "PlayerData") //checks if the cache wanted to be loaded is PlayerData
         {
             PlayerData PlayerData = new PlayerData(); //creates a variable that can access the PlayerData cache
-            if (File.Exists("Assets\\Data\\" + DataType + ".txt"))  //Checks if the file for the cache exists
+            if (File.Exists(Application.persistentDataPath + "\\Data\\" + DataType + ".txt"))  //Checks if the file for the cache exists
             {
-                string Data = File.ReadAllText("Assets\\Data\\" + DataType + ".txt"); //reads the json data in the file
+                string Data = File.ReadAllText(Application.persistentDataPath + "\\Data\\" + DataType + ".txt"); //reads the json data in the file
                 PlayerData = JsonUtility.FromJson<PlayerData>(Data); //converts the json data to struct data for the PlayerData struct
             }
             PlayersData = PlayerData; //Writes the players data to the PlayerData cache
@@ -96,9 +98,9 @@ public class SaveAndLoad : MonoBehaviour
         if (DataType == "CoilData") //checks if the cache wanted to be loaded is CoilData
         {
             CoilData CoilData = new CoilData(); //creates a variable that can access the CoilData cache
-            if (File.Exists("Assets\\Data\\" + DataType + ".txt"))  //Checks if the file for the cache exists
+            if (File.Exists(Application.persistentDataPath + "\\Data\\" + DataType + ".txt"))  //Checks if the file for the cache exists
             {
-                string Data = File.ReadAllText("Assets\\Data\\" + DataType + ".txt"); //reads the json data in the file
+                string Data = File.ReadAllText(Application.persistentDataPath + "\\Data\\" + DataType + ".txt"); //reads the json data in the file
                 CoilData = JsonUtility.FromJson<CoilData>(Data); //converts the json data to struct data for the CoilData struct
             }
             CoilsData = CoilData; //Writes the players data to the CoilData cache

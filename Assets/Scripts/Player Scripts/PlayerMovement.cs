@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static StartMenu;
+using static BombExplosion;
 
 public class PlayerMovement : MonoBehaviour
 //Requires Main Camera to be a child of this object
@@ -49,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
             Cursor.visible = true; //hides cursor while playing
             Cursor.lockState = CursorLockMode.Confined; //locks cursor to the centre of the game window
         }
-        if (Physics.Raycast(new Vector3(transform.position.x,transform.position.y+1,transform.position.z), Vector3.down, out hit, 1.02f)) //raycasts downwards from the players centre 1.02 units and checks if an object is there
+        if (Physics.Raycast(new Vector3(transform.position.x,transform.position.y+1,transform.position.z), Vector3.down, out hit, 1.08f)) //raycasts downwards from the players centre 1.02 units and checks if an object is there
         {
             if (hit.transform.name.Contains("Floor")) { CanJump = true; } //if there is an object and it is a floor object then the player can jump
         }
@@ -74,17 +75,16 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddRelativeForce(new Vector3(Input.GetAxisRaw("Vertical"), 0, -Input.GetAxisRaw("Horizontal")).normalized * SprintSpeed * Time.smoothDeltaTime, ForceMode.Impulse); //moves the player at running speed
         }
-        if (!Input.GetKey(KeyCode.W) & !Input.GetKey(KeyCode.S) & !Input.GetKey(KeyCode.A) & !Input.GetKey(KeyCode.D)) { rb.velocity = new Vector3(0, rb.velocity.y, 0); } //if no movement keys are held the player stops
         if (Input.GetKey(KeyCode.Space) & CanJump) { rb.AddRelativeForce(new Vector3(0, JumpHight, 0), ForceMode.Impulse); } //if the space key is pressed and the player can jump an upwards force is applied
     }
     void ClampVelocity() 
     {
-        if (!Input.GetKey(KeyCode.LeftShift)) //checks if left shift is not pressed down 
+        if (!Input.GetKey(KeyCode.LeftShift) & !Knocked) //checks if left shift is not pressed down 
         { 
             Velocity = Vector2.ClampMagnitude(new Vector2(rb.velocity.x,rb.velocity.z), MaxSpeed); //clamps the magnitued of the rigidbodyes x and z velocities to be below MaxSpeed and stores them
             rb.velocity = new Vector3(Velocity.x, rb.velocity.y, Velocity.y); //sets the player velocity to the clamped x and z and dosn't alter the y   
         }
-        else //if left shift is pressed down
+        if (Input.GetKey(KeyCode.LeftShift) & !Knocked)//if left shift is pressed down
         {
             Velocity = Vector2.ClampMagnitude(new Vector2(rb.velocity.x, rb.velocity.z), MaxSprintSpeed); //clamps the magnitued of the rigidbodyes x and z velocities to be below MaxSprintSpeed and stores them
             rb.velocity = new Vector3(Velocity.x, rb.velocity.y, Velocity.y); //sets the player velocity to the clamped x and z and dosn't alter the y 

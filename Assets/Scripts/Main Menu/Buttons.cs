@@ -48,4 +48,8 @@ public class Buttons : MonoBehaviour
             keyboardShortcutsMenu = false;
         }
     }
+    public void onQuitGame() 
+    {
+        Application.Quit();
+    }
 }

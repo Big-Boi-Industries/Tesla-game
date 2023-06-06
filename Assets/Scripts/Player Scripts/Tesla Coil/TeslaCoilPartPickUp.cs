@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static BuildTeslaCoil;
+using static BombExplosion;
 
 public class TeslaCoilPartPickUp : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class TeslaCoilPartPickUp : MonoBehaviour
         showPickup.SetActive(false);
         showDrop.SetActive(false);
         backer.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -42,6 +44,7 @@ public class TeslaCoilPartPickUp : MonoBehaviour
         {
 
             showDrop.SetActive(true);
+            showPickup.SetActive(false);
 
             Part.transform.rotation = new Quaternion(0, Player.transform.rotation.y, 0 , Player.transform.rotation.w);
             Part.transform.position = new Vector3(Holder.transform.position.x, Holder.transform.position.y, Holder.transform.position.z);
@@ -51,15 +54,12 @@ public class TeslaCoilPartPickUp : MonoBehaviour
                 Part = null;
                 PickedUp = false;
             }
-        } else
+        } 
+        else
         {
             showDrop.SetActive(false);
         }
-
-        if(PickedUp)
-        {
-            showPickup.SetActive(false);
-        }
+        if (Knocked) { Part = null; PickedUp = false; }
     }
     private void OnCollisionStay(Collision collision)
     {

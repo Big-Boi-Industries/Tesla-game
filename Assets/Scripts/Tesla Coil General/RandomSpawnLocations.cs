@@ -9,9 +9,9 @@ public class RandomSpawnLocations : MonoBehaviour
     private GameObject Coil2;
     private GameObject Coil3;
     private GameObject Coil4;
-    private Vector3[] Locations = { new Vector3(-35.25f, 10, 16.5f), new Vector3(-33.75f, 10, 16.5f), new Vector3(-31.75f, 10, 16.5f), new Vector3(-28.5f, 10, 19.25f), new Vector3(-26.5f, 10, 19.25f), new Vector3(-26.5f, 10, 17.75f), new Vector3(-26.5f, 10, 21f), new Vector3(-27.5f, 10, 21f), new Vector3(-35f, 10, 26.75f) };
+    public static Vector3[] Locations = { new Vector3(-35.25f, 10, 16.5f), new Vector3(-33.75f, 10, 16.5f), new Vector3(-31.75f, 10, 16.5f), new Vector3(-28.5f, 10, 19.25f), new Vector3(-26.5f, 10, 19.25f), new Vector3(-26.5f, 10, 17.75f), new Vector3(-26.5f, 10, 21f), new Vector3(-27.5f, 10, 21f), new Vector3(-35f, 10, 26.75f) };
     private int Number;
-    private int[] Location = { 1, 2, 3, 4 };
+    public static int[] Location = { 1, 2, 3, 4 };
     // Start is called before the first frame update
     void Start()
     {
@@ -35,5 +35,12 @@ public class RandomSpawnLocations : MonoBehaviour
     void Update()
     {
         
+    }
+    public static void respawn(GameObject Piece) 
+    {
+        if (Piece.name.Contains("1")) { Piece.transform.position = Locations[Location[0]]; }
+        if (Piece.name.Contains("2")) { Piece.transform.position = Locations[Location[1]]; }
+        if (Piece.name.Contains("3")) { Piece.transform.position = Locations[Location[2]]; }
+        if (Piece.name.Contains("4")) { Piece.transform.position = Locations[Location[3]]; }
     }
 }
