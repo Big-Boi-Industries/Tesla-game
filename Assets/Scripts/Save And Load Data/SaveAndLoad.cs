@@ -19,7 +19,6 @@ public class SaveAndLoad : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(Application.persistentDataPath);
         Coil1 = GameObject.Find("Tesla Coil Base (1)");
         Coil2 = GameObject.Find("Tesla Coil Front Middle (2)");
         Coil3 = GameObject.Find("Tesla Coil Generator (3)");
