@@ -33,17 +33,14 @@ public class BuildTeslaCoil : MonoBehaviour
         if (Placed4 & !Built) { GameObject.Find("Tesla Coil Top (4)").GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll; GameObject.Find("Tesla Coil Top (4)").transform.rotation = new Quaternion(0, 0.7071f, 0, -0.7071f); }
         if (Input.GetKeyDown(KeyCode.E) & CanBuild) 
         {
-            try 
+            try
             {
                 if (Part.name.Contains("1")) { PickedUp = false; Placed1 = true; Part.transform.rotation = new Quaternion(0, 1, 0, 0); Part.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll; Part.transform.position = new Vector3(WorkBench.transform.position.x, WorkBench.transform.position.y + 0.3f, WorkBench.transform.position.z + 0.3f); Part = null; }
-                if (Part.name.Contains("2")) { if (Placed1) { PickedUp = false; Placed2 = true; Part.transform.rotation = new Quaternion(0, 0.7071f, 0, 0.7071f); Part.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll; Part.transform.position = new Vector3(WorkBench.transform.position.x + 0.3f, WorkBench.transform.position.y + 0.8f, WorkBench.transform.position.z+0.3f); Part = null; } }
+                if (Part.name.Contains("2")) { if (Placed1) { PickedUp = false; Placed2 = true; Part.transform.rotation = new Quaternion(0, 0.7071f, 0, 0.7071f); Part.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll; Part.transform.position = new Vector3(WorkBench.transform.position.x + 0.3f, WorkBench.transform.position.y + 0.8f, WorkBench.transform.position.z + 0.3f); Part = null; } }
                 if (Part.name.Contains("3")) { if (Placed1) { PickedUp = false; Placed3 = true; Part.transform.rotation = new Quaternion(0, 0.7071f, 0, -0.7071f); Part.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll; Part.transform.position = new Vector3(WorkBench.transform.position.x, WorkBench.transform.position.y + 1.23f, WorkBench.transform.position.z + 0.3f); Part = null; } }
                 if (Part.name.Contains("4")) { if (Placed2) { PickedUp = false; Placed4 = true; Part.transform.rotation = new Quaternion(0, 0.7071f, 0, -0.7071f); Part.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll; Part.transform.position = new Vector3(WorkBench.transform.position.x + 0.138f, WorkBench.transform.position.y + 1.77f, WorkBench.transform.position.z + 0.3f); Part = null; } }
             }
-            catch 
-            {
-                Debug.Log(null);
-            }
+            catch { }
         }
         if (Placed1 & Placed2 & Placed3 & Placed4 & !Built) 
         {
@@ -65,11 +62,30 @@ public class BuildTeslaCoil : MonoBehaviour
         if (collision.collider.name == "WorkBench") 
         {
             CanBuild = true;
-            if (PickedUp)
+            try
             {
-                showBuild.SetActive(true);
-                backer2.SetActive(true);
+                if (Part.name.Contains("1"))
+                {
+                    showBuild.SetActive(true);
+                    backer2.SetActive(true);
+                }
+                if (Part.name.Contains("2") & Placed1)
+                {
+                    showBuild.SetActive(true);
+                    backer2.SetActive(true);
+                }
+                if (Part.name.Contains("3") & Placed1)
+                {
+                    showBuild.SetActive(true);
+                    backer2.SetActive(true);
+                }
+                if (Part.name.Contains("4") & Placed2)
+                {
+                    showBuild.SetActive(true);
+                    backer2.SetActive(true);
+                }
             }
+            catch { }
         }
     }
     private void OnCollisionExit(Collision collision)

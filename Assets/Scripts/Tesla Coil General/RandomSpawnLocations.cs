@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using static GlobalVariables;
 
 public class RandomSpawnLocations : MonoBehaviour
 {
@@ -19,16 +20,19 @@ public class RandomSpawnLocations : MonoBehaviour
         Coil2 = GameObject.Find("Tesla Coil Front Middle (2)");
         Coil3 = GameObject.Find("Tesla Coil Generator (3)");
         Coil4 = GameObject.Find("Tesla Coil Top (4)");
-        for (int i = 0; i < 4; i++) 
+        if (newGame)
         {
-            Number = UnityEngine.Random.Range(1, 9);
-            if (!Location.Contains(Number)) { Location[i] = Number; }
-            else { i = i - 1; }
+                for (int i = 0; i < 4; i++)
+            {
+                Number = UnityEngine.Random.Range(1, 9);
+                if (!Location.Contains(Number)) { Location[i] = Number; }
+                else { i = i - 1; }
+            }
+            Coil1.transform.position = Locations[Location[0]];
+            Coil2.transform.position = Locations[Location[1]];
+            Coil3.transform.position = Locations[Location[2]];
+            Coil4.transform.position = Locations[Location[3]];
         }
-        Coil1.transform.position = Locations[Location[0]];
-        Coil2.transform.position = Locations[Location[1]];
-        Coil3.transform.position = Locations[Location[2]];
-        Coil4.transform.position = Locations[Location[3]];
     }
 
     // Update is called once per frame

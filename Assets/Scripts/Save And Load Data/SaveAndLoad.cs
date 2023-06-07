@@ -5,6 +5,8 @@ using System.IO;
 using System;
 using static StartMenu;
 using static BuildTeslaCoil;
+using static Win;
+using static RandomSpawnLocations;
 public class SaveAndLoad : MonoBehaviour
 {
     private GameObject Player;
@@ -41,10 +43,12 @@ public class SaveAndLoad : MonoBehaviour
             Coil2.transform.position = CoilsData.Location2;
             Coil3.transform.position = CoilsData.Location3;
             Coil4.transform.position = CoilsData.Location4;
+            Location = CoilsData.SpawnLocations;
             Load("PlayerData"); //Loads data for the PlayerData catagory if the game is continued
             Player.transform.position = PlayersData.PlayerPosition; //sets the players position to the saved position
             Player.transform.rotation = PlayersData.PlayerRotationHorizontal; //sets the players horizontal rotation to the saved rotation
             Camera.transform.rotation = PlayersData.PlayerRotationVertical; //sets the players vertiacal look rotation to the saved rotation
+            GameOver = PlayersData.HasWon;
             HasRun = true;
         }
         if (Running) 
@@ -57,14 +61,16 @@ public class SaveAndLoad : MonoBehaviour
             CoilsData.Location2 = Coil2.transform.position; //saves the position of the second coil part to a temp variable
             CoilsData.Location3 = Coil3.transform.position; //saves the position of the third coil part to a temp variable
             CoilsData.Location4 = Coil4.transform.position;
+            CoilsData.SpawnLocations = Location;
             Save("CoilData");
+            PlayersData.HasWon = GameOver;
             PlayersData.PlayerPosition = Player.transform.position; //saves the players position to the PlayerData save cache every update
             PlayersData.PlayerRotationHorizontal = Player.transform.rotation; //saves the players horizontal rotation to the PlayerData save cache every update
             PlayersData.PlayerRotationVertical = Camera.transform.rotation; //saves the players vertical look rotation to the PlayerData save cache every update
             Save("PlayerData"); //Saves the data in the PlayerData cache to the drive
         }
     }
-    public void Save(string DataType) //takes a string of the desired cache to save
+    public static void Save(string DataType) //takes a string of the desired cache to save
     {
         if (!Directory.Exists(Application.persistentDataPath + "\\Data\\")) { Directory.CreateDirectory(Application.persistentDataPath + "\\Data\\"); }
         if (!File.Exists(Application.persistentDataPath + "\\Data\\" + DataType + ".txt")) //checks if a file for the cache dosn't exists
@@ -82,7 +88,7 @@ public class SaveAndLoad : MonoBehaviour
             File.WriteAllText(Application.persistentDataPath + "\\Data\\" + DataType + ".txt", Data); //Writes the json string the designated file
         }
     }
-    public void Load(string DataType) //takes a string of the desired cache to load
+    public static void Load(string DataType) //takes a string of the desired cache to load
     {
         if (DataType == "PlayerData") //checks if the cache wanted to be loaded is PlayerData
         {
@@ -111,9 +117,11 @@ public class SaveAndLoad : MonoBehaviour
         public Vector3 PlayerPosition; //creates a variable to store the players position
         public Quaternion PlayerRotationHorizontal; //creates a variable to store the players horizontal rotation
         public Quaternion PlayerRotationVertical; //creates a variable to store the players vertical look rotation
+        public bool HasWon; //creates a veriable to say if the player has won
     }
     public struct CoilData
     {
+        public int[] SpawnLocations;
         public Vector3 Location1;
         public bool Placed1;
         public Vector3 Location2;

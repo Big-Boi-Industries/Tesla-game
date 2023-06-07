@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static StartMenu;
+using static Win;
 
 public class BombSpawning : MonoBehaviour
 {
@@ -20,13 +21,13 @@ public class BombSpawning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Running)
+        if (Running & !GameOver)
         {
             Spawn = Random.Range(1, SpawnChance);
             if (Spawn == 1)
             {
                 Spawn = Random.Range(0, 10);
-                Instantiate(Bomb, Locations[Spawn], new Quaternion(0, 0.7071f, 0, 0.7071f));
+                Instantiate(Bomb, Locations[Spawn], new Quaternion(1, 0, 0, 0));
             }
         }
     }

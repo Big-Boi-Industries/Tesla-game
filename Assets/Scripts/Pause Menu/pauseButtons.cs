@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static StartMenu;
+using UnityEngine.SceneManagement;
 
 public class pauseButtons : MonoBehaviour
 {
@@ -28,5 +29,9 @@ public class pauseButtons : MonoBehaviour
     public void onQuit() 
     {
         Application.Quit();
+    }
+    public void onMainMenu() 
+    {
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 }

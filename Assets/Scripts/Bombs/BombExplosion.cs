@@ -5,7 +5,7 @@ using System.Linq;
 
 public class BombExplosion : MonoBehaviour
 {
-    [SerializeField] public float ExplosionRadius = 5.0f;
+    [SerializeField] public float ExplosionRadius = 1.5f;
     [SerializeField] public float ExplosionForce = 10.0f;
     private GameObject Player;
     public static bool Knocked = false;
