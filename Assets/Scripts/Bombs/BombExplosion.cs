@@ -29,7 +29,7 @@ public class BombExplosion : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.name.Contains("Floor") | collision.collider.name.Contains("WorkBench")) 
+        if (collision.collider.name.Contains("Floor") | collision.collider.name.Contains("WorkBench") | collision.collider.name.Contains("Tesla Coil")) 
         {
             Collider[] Objects = Physics.OverlapSphere(gameObject.transform.position,ExplosionRadius);
             foreach (Collider hit in Objects) 

@@ -12,8 +12,8 @@ public class BuildTeslaCoil : MonoBehaviour
     public static bool Placed4 = false;
     private bool Built = false;
     private GameObject WorkBench;
-    [SerializeField] private GameObject backer2;
-    [SerializeField] private GameObject showBuild;
+    private GameObject backer2;
+    private GameObject showBuild;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,9 +57,9 @@ public class BuildTeslaCoil : MonoBehaviour
             backer2.SetActive(false);
         }
     }
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionStay(Collision collider)
     {
-        if (collision.collider.name == "WorkBench") 
+        if (collider.collider.name == "WorkBench") 
         {
             CanBuild = true;
             try
@@ -88,9 +88,9 @@ public class BuildTeslaCoil : MonoBehaviour
             catch { }
         }
     }
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionExit(Collision collider)
     {
-        if (collision.collider.name == "WorkBench")
+        if (collider.collider.name == "WorkBench")
         {
             CanBuild = false;
             showBuild.SetActive(false);

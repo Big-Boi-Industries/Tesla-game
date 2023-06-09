@@ -5,6 +5,7 @@ using static StartMenu;
 using static BuildTeslaCoil;
 using static Win;
 using static RandomSpawnLocations;
+using static TeslaCoilPartPickUp;
 using UnityEngine.SceneManagement;
 
 public class pauseButtons : MonoBehaviour
@@ -35,7 +36,8 @@ public class pauseButtons : MonoBehaviour
     }
     public void onMainMenu() 
     {
-        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        Continued = false;
+        PickedUp = false;
         GameOver = false;
         Placed1 = false;
         Placed2 = false;
@@ -45,5 +47,6 @@ public class pauseButtons : MonoBehaviour
         {
             Location[i] = 0;
         }
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 }
