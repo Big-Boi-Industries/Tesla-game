@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static StartMenu;
+using static BuildTeslaCoil;
+using static Win;
+using static RandomSpawnLocations;
 using UnityEngine.SceneManagement;
 
 public class pauseButtons : MonoBehaviour
@@ -33,5 +36,14 @@ public class pauseButtons : MonoBehaviour
     public void onMainMenu() 
     {
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        GameOver = false;
+        Placed1 = false;
+        Placed2 = false;
+        Placed3 = false;
+        Placed4 = false;
+        for (int i = 0; i < Location.Length; i++)
+        {
+            Location[i] = 0;
+        }
     }
 }
